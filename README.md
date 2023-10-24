@@ -6,7 +6,7 @@ Bienvenido al Funko Marketplace, tu destino para comprar, vender e intercambiar 
 Jose de la Cruz
 Gabriel Blanco
 Fabrizio Paico
-Adrian
+Adrian Deza
 
 ## Características
 
