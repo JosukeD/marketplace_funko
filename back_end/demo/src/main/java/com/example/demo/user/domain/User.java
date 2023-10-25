@@ -1,10 +1,12 @@
 package com.example.demo.user.domain;
 
+
 import java.util.List;
-
-import jakarta.persistence.GenerationType;
-
+import jakarta.persistence.*;
 import java.util.ArrayList;
+
+import com.example.demo.product.domain.Product;
+import com.example.demo.review.domain.Review;
 
 
 @Entity
