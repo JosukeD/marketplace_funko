@@ -1,10 +1,11 @@
-package main.java.com.example.demo.user.domain;
+package com.example.demo.user.domain;
 
 import java.util.List;
+
+import jakarta.persistence.GenerationType;
+
 import java.util.ArrayList;
-import javax.persistence.*;
-import main.java.com.example.demo.product.domain.Product;
-import main.java.com.example.demo.review.domain.Review;
+
 
 @Entity
 @Table(name = "users")
