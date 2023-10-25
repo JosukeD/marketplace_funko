@@ -1,8 +1,6 @@
 package com.example.demo.review.domain;
 
-import java.util.List;
 import jakarta.persistence.*;
-import java.util.ArrayList;
 
 import com.example.demo.user.domain.User;
 import com.example.demo.product.domain.Product;
