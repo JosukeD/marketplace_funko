@@ -28,6 +28,28 @@ Adrian Deza
 
 Para configurar el entorno de desarrollo y ejecutar este proyecto en tu máquina local, sigue estos pasos:
 
+1. Poder ejecutar el proyecto en tu máquina local requiere que tengas instalado [Node.js](https://nodejs.org/en/) y [MongoDB](https://www.mongodb.com/try/download/community) en tu sistema.
+
+2. **Clonar el Repositorio**:
+
+   ```bash
+   git clone
+
+3. **Instalar Dependencias**:
+
+   ```bash
+
+   npm install
+   ```
+
+4. **Iniciar el Servidor**:
+
+   ```bash
+   npm start
+   ```
+
+Listo ya tendrias todo lo necesario para poder ejecutar el proyecto en tu maquina local.
+
 1. **Clonar el Repositorio**:
 
    ```bash
