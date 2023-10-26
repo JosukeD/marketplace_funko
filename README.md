@@ -2,11 +2,12 @@
 
 Bienvenido al Funko Marketplace, tu destino para comprar, vender e intercambiar tus figuras de Funko favoritas.
 
-# Creadores:
-Jose de la Cruz
-Gabriel Blanco
-Fabrizio Paico
-Adrian Deza
+# Contributors
+
+1. Jose De la Cruz
+2. Fabrizio Paico
+3. Adrian Deza
+4. Gabriel Blanco
 
 ## Características
 
