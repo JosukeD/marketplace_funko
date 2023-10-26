@@ -1,6 +1,5 @@
 package com.example.demo.review.domain;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -23,35 +22,46 @@ public class ReviewService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<Review> findAll() {
-        return reviewRepository.findAll();
-    }
-
-    public Optional<Review> findById(Long id) {
-        return reviewRepository.findById(id);
-    }
-
     public Review create(Review review) {
         return reviewRepository.save(review);
     }
 
     public Review update(Long id, Review review) {
-        Review foundReview = reviewRepository.findById(id).orElseThrow();
-        BeanUtils.copyProperties(review, foundReview, "id");
-        return reviewRepository.save(foundReview);
+        Optional<Review> optionalReview = reviewRepository.findById(id);
+        if (optionalReview.isPresent()) {
+            Review foundReview = optionalReview.get();
+            BeanUtils.copyProperties(review, foundReview, "id");
+            return reviewRepository.save(foundReview);
+        } else {
+            return null;
+        }
     }
 
     public void delete(Long id) {
         reviewRepository.deleteById(id);
     }
 
-    public List<Review> findByUser(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow();
-        return reviewRepository.findByUser(user);
+    public Iterable<Review> findByUser(Long userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            return reviewRepository.findByUser(user);
+        } else {
+            return null;
+        }
     }
 
-    public List<Review> findByProduct(Long productId) {
-        Product product = productRepository.findById(productId).orElseThrow();
-        return reviewRepository.findByProduct(product);
+    public Iterable<Review> findByProduct(Long productId) {
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+        if (optionalProduct.isPresent()) {
+            Product product = optionalProduct.get();
+            return reviewRepository.findByProduct(product);
+        } else {
+            return null;
+        }
+    }
+
+    public Iterable<Review> findAll() {
+        return reviewRepository.findAll();
     }
 }

@@ -1,8 +1,8 @@
-package com.example.demo.product.domain;
+package com.example.demo.user.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 }
