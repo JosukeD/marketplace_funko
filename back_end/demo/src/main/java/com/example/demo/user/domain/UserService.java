@@ -1,6 +1,8 @@
 package com.example.demo.user.domain;
 // User Service
 
+import java.util.Optional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
+
     public User update(Long id, User user) {
         User foundUser = userRepository.findById(id).get();
         BeanUtils.copyProperties(user, foundUser, "id");
@@ -31,7 +34,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User findById(Long id) {
-        return userRepository.findById(id).get();
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
     }
 }
