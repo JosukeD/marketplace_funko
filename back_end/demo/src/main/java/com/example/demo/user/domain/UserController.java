@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 import java.util.List;
 import java.util.Optional;  
@@ -13,22 +15,42 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+    
+    @Autowired
     private UserService userservice;
 
-    @PostMapping("/signup")
-    public ResponseEntity<User> userservice(@RequestBody User user) {
-        return new ResponseEntity<>(userservice.create(user), HttpStatus.CREATED);
+    @Autowired
+    private UserRepository userRepository;
+
+    @PostMapping("/save")
+    public ResponseEntity<User> userservice(@RequestBody UserDTO userDTO) {
+        return new ResponseEntity<>(userservice.create(userDTO), HttpStatus.CREATED);
     }
-    
-    @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> User(@PathVariable Long id) {
-        Optional<User> User = userservice.findById(id);
-        if (User.isEmpty()) { 
-            throw new UserNotFoundException("User not found");
+
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody UserDTO userDTO) {
+        
+        User user1 = userRepository.findByUser(userDTO.getUsername());
+        if (user1 != null) {
+            String password = userDTO.getPassword();
+            String encodedPassword = user1.getPassword();
+            Boolean isPwdRight = passwordEncoder.matches(password, encodedPassword);
+            if (isPwdRight) {
+                Optional<User> user = userRepository.findUserandPassword(userDTO.getUsername(), encodedPassword);
+                if (user.isPresent()) {
+                    return ResponseEntity.status(201).body("Login Succes");
+                } else {
+                    return ResponseEntity.status(201).body("Login Failed");
+                }
+            } else {
+                return ResponseEntity.status(201).body("Password not exists");
+            }
+        }else {
+            return ResponseEntity.status(201).body("Password not exists");
         }
-        UserDTO UserDTO = new UserDTO(User.get().getUsername(), User.get().getPassword());
-        return ResponseEntity.status(200).body(UserDTO);
-    }
+    }    
+
 
     @GetMapping
     public ResponseEntity<Iterable<User>> getAllCourses() {
