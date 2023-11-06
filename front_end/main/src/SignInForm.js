@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import './SignInForm.css'; // Create this CSS file for styling
+import { Link } from 'react-router-dom';
+import './SignInForm.css';
 
 function SignInForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignIn = () => {
-    // Handle the form submission here, e.g., send data to an API
     console.log('Username:', username);
     console.log('Password:', password);
-  };
+  }
 
   return (
     <div className="sign-in-container">
@@ -38,6 +38,9 @@ function SignInForm() {
             Sign In
           </button>
         </form>
+        <p>
+          You don't have an account? <Link to="/signup">Sign Up</Link>
+        </p>
       </div>
     </div>
   );

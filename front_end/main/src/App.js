@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import TopBar from './TopBar';
-import SignInForm from './SignInForm'; // Import the SignInForm component
+import SignInForm from './SignInForm';
 
 function Home() {
   return <h2>Home Page</h2>;

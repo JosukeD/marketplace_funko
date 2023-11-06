@@ -8,13 +8,15 @@ function TopBar() {
     <div className="top-bar">
       <div className="background-bar"></div>
       <div className="logo">
-        <img src={logo} alt="Funko Pop Logo" />
+        <Link to="/"> 
+          <img src={logo} alt="Funko Pop Logo" />
+        </Link>
       </div>
       <div className="search-bar">
         <input type="text" placeholder="Search for Funko Pops" />
       </div>
       <div className="sign-in">
-        <Link to="/signin" className="white-text">Sign In</Link> {}
+        <Link to="/signin" className="white-text">Sign In</Link>
       </div>
     </div>
   );
