@@ -1,0 +1,9 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+:root {
+  --main-color: rgb(98, 214, 227);
+  --secondary-color: rgba(3,30,60,255);
+}
