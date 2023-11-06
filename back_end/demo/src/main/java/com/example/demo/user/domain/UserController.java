@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
-import java.util.List;
 import java.util.Optional;  
 
 @RestController
@@ -47,7 +46,7 @@ public class UserController {
                 return ResponseEntity.status(201).body("Password not exists");
             }
         }else {
-            return ResponseEntity.status(201).body("Password not exists");
+            return ResponseEntity.status(201).body("Username not exists");
         }
     }    
 

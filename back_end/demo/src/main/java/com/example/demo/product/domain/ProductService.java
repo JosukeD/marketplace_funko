@@ -5,8 +5,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.product.domain.Product;
-import com.example.demo.product.domain.ProductRepository;
 
 @Service
 public class ProductService {

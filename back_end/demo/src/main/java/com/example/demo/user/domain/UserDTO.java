@@ -11,7 +11,6 @@ public class UserDTO {
     public UserDTO(String username, String password) {
         this.username = username;
         this.password = password;
-        this.id = id;
     }
 
     public String getUsername() {
