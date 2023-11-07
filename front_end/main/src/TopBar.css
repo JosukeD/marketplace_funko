@@ -1,0 +1,44 @@
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.background-bar {
+  background-color: rgb(3, 30, 60);
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.logo {
+  z-index: 1;
+}
+
+.logo img {
+  max-width: 75px;
+  max-height: 175px;
+}
+
+.search-bar {
+  z-index: 1;
+}
+
+.search-bar input {
+  padding: 5px;
+  width: 300px;
+}
+
+.sign-in {
+  z-index: 1;
+}
+
+.sign-in a {
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+}

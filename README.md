@@ -1,42 +1,42 @@
 # Funko Marketplace
 
-Bienvenido al Funko Marketplace, tu destino para comprar, vender e intercambiar tus figuras de Funko favoritas.
+Welcome to Funko Marketplace, your destination for buying, selling, and trading your favorite Funko figures.
 
-# Contributors
+## Contributors
 
 1. Jose De la Cruz
 2. Fabrizio Paico
 3. Adrian Deza
 4. Gabriel Blanco
 
-## Características
+## Features
 
-- **Catálogo Extensivo**: Explora una amplia gama de figuras de Funko, desde tus personajes favoritos de películas, series, videojuegos y cómics.
+- **Extensive Catalog**: Explore a wide range of Funko figures, including your favorite characters from movies, series, video games, and comics.
 
-- **Perfiles de Usuarios**: Regístrate y crea tu propio perfil para administrar tus anuncios, seguimientos y compras.
+- **User Profiles**: Register and create your own profile to manage your listings, followings, and purchases.
 
-- **Listados Detallados**: Publica anuncios con descripciones detalladas, imágenes de alta calidad y precios competitivos.
+- **Detailed Listings**: Post ads with detailed descriptions, high-quality images, and competitive prices.
 
-- **Sistema de Mensajería**: Comunícate de forma segura con otros usuarios para discutir detalles de la transacción.
+- **Messaging System**: Communicate securely with other users to discuss transaction details.
 
-- **Calificaciones y Reseñas**: Califica a otros usuarios y deja reseñas para construir una comunidad confiable.
+- **Ratings and Reviews**: Rate other users and leave reviews to build a trustworthy community.
 
-- **Notificaciones en Tiempo Real**: Mantente al tanto de las actividades de tu cuenta con notificaciones instantáneas.
+- **Real-Time Notifications**: Stay updated on your account activities with instant notifications.
 
-- **Carrito de Compras**: Agrega múltiples artículos a tu carrito y realiza compras rápidas.
+- **Shopping Cart**: Add multiple items to your cart and make quick purchases.
 
-## Configuración del Entorno de Desarrollo
+## Development Environment Setup
 
-Para configurar el entorno de desarrollo y ejecutar este proyecto en tu máquina local, sigue estos pasos:
+To set up the development environment and run this project on your local machine, follow these steps:
 
-1. Poder ejecutar el proyecto en tu máquina local requiere que tengas instalado [Node.js](https://nodejs.org/en/) y [MongoDB](https://www.mongodb.com/try/download/community) en tu sistema.
+1. Running the project on your local machine requires you to have [Node.js](https://nodejs.org/en/) and [MongoDB](https://www.mongodb.com/try/download/community) installed on your system.
 
-2. **Clonar el Repositorio**:
+2. **Clone the Repository**:
 
    ```bash
    git clone
 
-3. **Instalar Dependencias**:
+3. **Install Dependencies**:
 
    ```bash
 
@@ -54,4 +54,4 @@ Listo ya tendrias todo lo necesario para poder ejecutar el proyecto en tu maquin
 1. **Clonar el Repositorio**:
 
    ```bash
-   git clone https://github.com/tuusuario/funko-marketplace.git
+   git clone https://github.com/yourusername/funko-marketplace.git
