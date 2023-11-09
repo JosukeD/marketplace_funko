@@ -1,7 +1,6 @@
 package com.example.demo.user.domain;
 
 public class UserDTO {
-    private int id;
     private String username;
     private String password;
 
@@ -28,10 +27,5 @@ public class UserDTO {
         this.password = password;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;}
+    
 }

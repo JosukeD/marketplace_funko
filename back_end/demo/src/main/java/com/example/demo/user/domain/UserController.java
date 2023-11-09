@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 import java.util.Optional;  
@@ -12,9 +11,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
     
     @Autowired
     private UserService userservice;
@@ -30,13 +26,13 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody UserDTO userDTO) {
         
-        User user1 = userRepository.findByUser(userDTO.getUsername());
+        User user1 = userRepository.findByUsername(userDTO.getUsername());
         if (user1 != null) {
             String password = userDTO.getPassword();
             String encodedPassword = user1.getPassword();
-            Boolean isPwdRight = passwordEncoder.matches(password, encodedPassword);
-            if (isPwdRight) {
-                Optional<User> user = userRepository.findUserandPassword(userDTO.getUsername(), encodedPassword);
+            
+            if (password == encodedPassword) {
+                Optional<User> user = userRepository.findByUsernameAndPassword(userDTO.getUsername(), encodedPassword);
                 if (user.isPresent()) {
                     return ResponseEntity.status(201).body("Login Succes");
                 } else {
