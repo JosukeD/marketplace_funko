@@ -39,7 +39,7 @@ function SignInForm() {
           </button>
         </form>
         <p>
-          You don't have an account? <Link to="/signup">Sign Up</Link>
+          You don't have an account? <Link to="/signup" className='signInPrompt'>Sign Up</Link>
         </p>
       </div>
     </div>

@@ -1,8 +1,17 @@
-.top-bar {
+.topBar {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
-  padding: 10px 20px;
+  justify-content: space-evenly;
+  height: 10%;
+  background: rgb(3, 30, 60);
+  box-sizing: border-box;
+  padding: 0 2vmin;
+}
+
+a{
+  color: white;
+  text-decoration: none;
 }
 
 .background-bar {
@@ -25,20 +34,16 @@
 }
 
 .search-bar {
-  z-index: 1;
+  height: 50%;
+  width: 40vmin;
 }
 
 .search-bar input {
-  padding: 5px;
-  width: 300px;
-}
-
-.sign-in {
-  z-index: 1;
-}
-
-.sign-in a {
-  color: white;
-  text-decoration: none;
-  margin-left: 10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 5vmin;
+  box-sizing: border-box;
+  padding: 0 2vmin;
+  border: none;
+  outline: none;
 }

@@ -2,14 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80%;
   background-color: rgb(98, 214, 227);
 }
 
 .sign-in-form {
   background-color: white;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 2vmin;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
@@ -37,4 +37,18 @@
   color: white;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s; /* Agregamos una transición suave */
+}
+
+.sign-in-form button:hover {
+  background-color: rgb(60, 160, 180); /* Cambiamos el color al pasar el mouse */
+}
+
+
+.signInPrompt{
+  color: black;
+  z-index: 10;
+  text-decoration:underline;
+  font-weight: bold;
+  color: blue;
 }

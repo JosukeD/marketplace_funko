@@ -5,8 +5,7 @@ import './TopBar.css';
 
 function TopBar() {
   return (
-    <div className="top-bar">
-      <div className="background-bar"></div>
+    <div className="topBar">
       <div className="logo">
         <Link to="/"> 
           <img src={logo} alt="Funko Pop Logo" />
@@ -15,9 +14,7 @@ function TopBar() {
       <div className="search-bar">
         <input type="text" placeholder="Search for Funko Pops" />
       </div>
-      <div className="sign-in">
-        <Link to="/signin" className="white-text">Sign In</Link>
-      </div>
+      <a href="/signin">Sign In</a>
     </div>
   );
 }
