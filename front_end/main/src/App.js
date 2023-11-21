@@ -9,11 +9,10 @@ import './tarjetas.css'
 function Home() {
   return (
     <div className="container">
-      <div className="tarjeta">Tarjeta 1</div>
-      <div className="tarjeta">Tarjeta 2</div>
-      <div className="tarjeta">Tarjeta 3</div>
-      <div className="tarjeta">Tarjeta 4</div>
-      {/* Agrega más tarjetas según sea necesario */}
+      <div className="tarjeta">Funko 1</div>
+      <div className="tarjeta">Funko 2</div>
+      <div className="tarjeta">Funko 3</div>
+      <div className="tarjeta">Funko 4</div>
     </div>
   );
 }
