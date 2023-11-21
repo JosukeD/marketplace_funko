@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-top: 50px; /* Esto moverá las tarjetas un poco más abajo */
+  }
+  
+  .tarjeta {
+    width: 200px;
+    height: 180px; /* Reducir la altura de las tarjetas */
+    margin: 10px;
+    background-color: #f1f1f1;
+    border-radius: 15px; /* Recortar las esquinas de las tarjetas */
+    transition: transform .2s; /* Agregar animación */
+  }
+  
+  .tarjeta:hover {
+    transform: scale(1.1); /* Ampliar la tarjeta cuando el mouse pasa por encima */
+  }
+  

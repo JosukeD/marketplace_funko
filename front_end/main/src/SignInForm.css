@@ -1,19 +1,27 @@
+@keyframes jump {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
 .sign-in-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80%;
-  background-color: rgb(98, 214, 227);
+  background-image: url("C:\Users\gabri\OneDrive\Documentos\UTEC 2023 - 2\Desarrollo Web\DBP CODE\Funk_MP\marketplace_funko\front_end\main\src\resources\funko background.jpg");
 }
 
 .sign-in-form {
-  background-color: white;
+  background-color:#AED6F1;
   padding: 20px;
   border-radius: 2vmin;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  text-align: center;
+  text-align: center; /* Agregamos la animación */
 }
 
+.sign-in-form:hover {
+  animation: jump 0.5s ease-in-out infinite; /* La animación se activa al pasar el mouse */
+}
 .sign-in-form h2 {
   margin: 0;
 }
@@ -33,7 +41,7 @@
 
 .sign-in-form button {
   padding: 10px;
-  background-color: rgb(98, 214, 227);
+  background-color: #4280F3  ;
   color: white;
   border: none;
   cursor: pointer;
@@ -43,7 +51,6 @@
 .sign-in-form button:hover {
   background-color: rgb(60, 160, 180); /* Cambiamos el color al pasar el mouse */
 }
-
 
 .signInPrompt{
   color: black;
