@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   height: 80%;
-  background-image: url("C:\Users\gabri\OneDrive\Documentos\UTEC 2023 - 2\Desarrollo Web\DBP CODE\Funk_MP\marketplace_funko\front_end\main\src\resources\funko background.jpg");
+  background-image: url("resources/funko\ background.jpg");
 }
 
 .sign-in-form {
