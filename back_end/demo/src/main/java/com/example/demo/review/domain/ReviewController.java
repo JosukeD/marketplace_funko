@@ -19,7 +19,6 @@ public class ReviewController {
 
     @PostMapping("/create")
     public ResponseEntity<Review> createReview(@RequestParam Long userId, @RequestParam Long productId, @RequestParam String text) {
-        // Assuming you have a UserService and ProductService to retrieve User and Product entities by ID
         User user = userService.findById(userId);
         Product product = productService.findById(productId);
 
@@ -32,7 +31,6 @@ public class ReviewController {
 
     @GetMapping("/product/{productId}")
     public ResponseEntity<List<Review>> getReviewsByProduct(@PathVariable Long productId) {
-        // Assuming you have a ProductService to retrieve Product entity by ID
         Product product = productService.findById(productId);
 
         if (product != null) {

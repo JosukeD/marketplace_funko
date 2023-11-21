@@ -26,7 +26,6 @@ public class Review {
     private String text;
 
     public Review() {
-        // Default constructor
     }
 
     public Review(User user, Product product, String text) {
@@ -34,8 +33,6 @@ public class Review {
         this.product = product;
         this.text = text;
     }
-
-    // Getters and setters
 
     public Long getId() {
         return id;
@@ -65,7 +62,6 @@ public class Review {
         this.text = text;
     }
 
-    // Equals and hashCode methods
 
     @Override
     public boolean equals(Object o) {
