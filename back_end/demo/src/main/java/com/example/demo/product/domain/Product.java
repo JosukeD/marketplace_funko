@@ -1,11 +1,11 @@
 package com.example.demo.product.domain;
 
-import java.util.List;
-import jakarta.persistence.*;
-import java.util.ArrayList;
-
 import com.example.demo.user.domain.User;
 import com.example.demo.review.domain.Review;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -15,47 +15,72 @@ public class Product {
     private Long id;
     private String name;
     private String description;
+    private double price;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy="product")
-    private List<Review> reviews = new ArrayList<Review>();
+    @OneToMany(mappedBy = "product")
+    private List<Review> reviews = new ArrayList<>();
 
-    public Product() {}
+    public Product() {
+    }
 
-    public Product(String name, String description, User user) {
+    public Product(String name, String description, double price, User user) {
         this.name = name;
         this.description = description;
+        this.price = price;
         this.user = user;
     }
 
-    public Product(Long id, String name, String description, User user, List<Review> reviews) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.user = user;
-        this.reviews = reviews;
-    }
+    // Getters and setters
 
     public Long getId() {
-        return this.id;
+        return id;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public String getDescription() {
-        return this.description;
+        return description;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     public User getUser() {
-        return this.user;
+        return user;
     }
 
     public List<Review> getReviews() {
-        return this.reviews;
+        return reviews;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void addReview(Review review) {
+        this.reviews.add(review);
     }
 }

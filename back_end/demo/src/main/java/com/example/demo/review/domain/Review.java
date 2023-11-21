@@ -1,61 +1,82 @@
 package com.example.demo.review.domain;
 
-import jakarta.persistence.*;
-
-import com.example.demo.user.domain.User;
 import com.example.demo.product.domain.Product;
+import com.example.demo.user.domain.User;
+
+import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "reviews")
 public class Review {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String description;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name="product_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
-    public Review() {}
+    @Column(nullable = false)
+    private String text;
 
-    public Review(String title, String description, User user, Product product) {
-        this.title = title;
-        this.description = description;
-        this.user = user;
-        this.product = product;
+    public Review() {
+        // Default constructor
     }
 
-    public Review(Long id, String title, String description, User user, Product product) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
+    public Review(User user, Product product, String text) {
         this.user = user;
         this.product = product;
+        this.text = text;
     }
+
+    // Getters and setters
 
     public Long getId() {
-        return this.id;
-    }
-
-    public String getTitle() {
-        return this.title;
-    }
-
-    public String getDescription() {
-        return this.description;
+        return id;
     }
 
     public User getUser() {
-        return this.user;
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Product getProduct() {
-        return this.product;
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    // Equals and hashCode methods
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Review review = (Review) o;
+        return Objects.equals(id, review.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
