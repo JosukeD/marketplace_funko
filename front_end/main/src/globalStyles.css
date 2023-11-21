@@ -1,6 +1,5 @@
 
-
-  .myComponent {
-    background-color: var(--secondary-color);
-    color: white;
-  }
+.myComponent {
+  background-image: url(https://image.shutterstock.com/image-vector/blue-dots-seamless-pattern-white-260nw-1927047774.jpg%29);
+  color: white;
+}
