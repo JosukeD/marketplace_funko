@@ -30,5 +30,17 @@ function App() {
     </Router>
   );
 }
+function createDropdown() {
 
+  var select = document.createElement("select");
+
+  var funkos = ["Funko 1", "Funko 2", "Funko 3", "Funko 4"];
+  for(var i = 0; i < funkos.length; i++) {
+    var option = document.createElement("option");
+    option.value = funkos[i];
+    option.text = funkos[i];
+    select.appendChild(option);
+  }
+  document.body.appendChild(select);
+}
 export default App;
