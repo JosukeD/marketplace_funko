@@ -13,7 +13,7 @@ const Tarjeta = ({funko}) => {
   }
   
   return (
-    <div>
+    <>
       <div onClick={handleClick} className='contenedor-tarjeta'>
         <h3>{funko.name}</h3>
         <hr />
@@ -24,7 +24,7 @@ const Tarjeta = ({funko}) => {
         funko={funko}
         setDescripcionTarjetaActivo={setDescripcionTarjetaActivo}
       />}
-    </div>
+    </>
   )
 }
 

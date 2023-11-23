@@ -29,7 +29,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignInForm />} />
           <Route path="/signup" element={<SignUpForm />} />
-          <Route path="/profile" element={<UserProfile />} /> {/* Ruta agregada aquí */}
+          <Route path="/profile" element={<UserProfile />} /> 
         </Routes>
       </div>
     </Router>
