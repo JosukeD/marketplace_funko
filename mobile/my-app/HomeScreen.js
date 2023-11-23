@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { View, Image, ImageBackground, Text, TextInput, TouchableOpacity, FlatList, Modal, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import ImagePicker from 'react-native-image-picker';
+import * as ImagePicker from 'expo-image-picker';
+import { launchCamera } from 'react-native-image-picker';
+import axios from 'axios';
+
+const API_BASE_URL = 'https://marketplacefunko-production.up.railway.app/api'; // Reemplaza con la URL correcta
 
 
 const HomeScreen = ({ navigation }) => {
@@ -12,8 +16,8 @@ const HomeScreen = ({ navigation }) => {
   const [newFunkoPrice, setNewFunkoPrice] = useState('');
   const [newFunkoSeries, setNewFunkoSeries] = useState('');
   const [searchText, setSearchText] = useState('');
-
-
+  const [isDeletingFunko, setIsDeletingFunko] = useState(false);
+  const [selectedFunko, setSelectedFunko] = useState(null);
 
   useEffect(() => {
     const data = [
@@ -47,14 +51,43 @@ const HomeScreen = ({ navigation }) => {
       const price = Math.floor(Math.random() * 41) + 20 + 0.99;
       return `$${price.toFixed(2)}`;
     };
+
+    const handleDeleteFunko = () => {
+      const updatedProducts = products.filter((funko) => funko !== selectedFunko);
+      setProducts(updatedProducts);
+      setIsDeletingFunko(false);
+    };
+
+    const confirmDeleteFunko = () => {
+      Alert.alert(
+        'Confirmar eliminación',
+        '¿Seguro que deseas eliminar este Funko?',
+        [
+          { text: 'Cancelar', style: 'cancel' },
+          { text: 'Confirmar', onPress: handleDeleteFunko },
+        ],
+        { cancelable: false }
+      );
+    };
   
-    const renderProductItem = ({ item }) => (
-      <TouchableOpacity style={{ margin: 10 }} onPress={() => console.log('Producto seleccionado:', item.title)}>
-        <Image source={{ uri: item.imageName }} style={{ width: 150, height: 150, borderRadius: 10 }} />
-        <Text style={{ marginTop: 5, fontSize: 16, fontWeight: 'bold', textAlign: 'center' }}>{item.title}</Text>
-        <Text style={{ marginTop: 5, fontSize: 14, color: 'gray', textAlign: 'center' }}>{item.price}</Text>
-      </TouchableOpacity>
-    );
+    const renderProductItem = ({ item }) => {
+      return (
+        <TouchableOpacity style={{ margin: 10 }} onPress={() => console.log('Producto seleccionado:', item.title)}>
+          <Image source={{ uri: item.imageName }} style={{ width: 150, height: 150, borderRadius: 10 }} />
+          <Text style={{ marginTop: 5, fontSize: 16, fontWeight: 'bold', textAlign: 'center' }}>{item.title}</Text>
+          <Text style={{ marginTop: 5, fontSize: 14, color: 'gray', textAlign: 'center' }}>{item.price}</Text>
+    
+          {/* Button to delete the Funko */}
+          <TouchableOpacity onPress={() => {
+            setSelectedFunko(item);
+            confirmDeleteFunko();
+          }}>
+            <Text style={{ color: 'red' }}>Eliminar Funko</Text>
+          </TouchableOpacity>
+        </TouchableOpacity>
+      );
+    };
+    
   
     const renderAddFunkoButton = () => (
       <TouchableOpacity
@@ -83,33 +116,24 @@ const HomeScreen = ({ navigation }) => {
           skipBackup: true,
           path: 'images',
         },
+      }
+
+      const newFunko = {
+        handle: newFunkoTitle.toLowerCase().replace(/\s+/g, '-'),
+        title: newFunkoTitle,
+        imageName: newFunkoImage,
+        price: `$${parseFloat(newFunkoPrice).toFixed(2)}`, 
+        series: newFunkoSeries,
       };
-    
-      ImagePicker.showImagePicker(options, response => {
-        if (response.didCancel) {
-          console.log('Usuario canceló la selección de imagen');
-        } else if (response.error) {
-          console.log('Error de ImagePicker: ', response.error);
-        } else {
-          const newFunko = {
-            handle: newFunkoTitle.toLowerCase().replace(/\s+/g, '-'),
-            title: newFunkoTitle,
-            imageName: response.uri, // Usar la URI de la imagen seleccionada
-            price: parseFloat(newFunkoPrice).toFixed(2),
-            series: newFunkoSeries,
-          };
-    
-          setProducts(prevProducts => [...prevProducts, newFunko]);
-    
-          setNewFunkoTitle('');
-          setNewFunkoImage('');
-          setNewFunkoPrice('');
-          setNewFunkoSeries('');
-          setIsAddingFunko(false);
-        }
-      });
-    };
-    
+  
+      setProducts((prevProducts) => [...prevProducts, newFunko]);
+  
+      setNewFunkoTitle('');
+      setNewFunkoImage('');
+      setNewFunkoPrice('');
+      setNewFunkoSeries('');
+      setIsAddingFunko(false);
+    }; 
   
     const handleSearch = () => {
       const filteredProducts = products.filter((product) => {
@@ -120,6 +144,25 @@ const HomeScreen = ({ navigation }) => {
   
       setProducts(filteredProducts);
     }
+
+    const openImagePicker = async () => {
+      let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (permissionResult.granted === false) {
+        alert('Permission to access media library is required!');
+        return;
+      }
+  
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+  
+      if (!result.cancelled) {
+        setNewFunkoImage(result.uri);
+      }
+    };
 
     return (
       <ImageBackground source={require('./funkobackground.jpg')} style={{ flex: 1, resizeMode: 'cover' }}>
@@ -204,8 +247,8 @@ const HomeScreen = ({ navigation }) => {
               </View>
 
               {/* Campo para seleccionar una imagen de la cámara */}
-              <TouchableOpacity onPress={() => ImagePicker.showImagePicker({}, response => {/* lógica para seleccionar imagen de la cámara */})}>
-                <Text style={{ color: 'blue', marginBottom: 10 }}>Seleccionar imagen de la cámara</Text>
+              <TouchableOpacity onPress={openImagePicker}>
+                <Text style={{ color: 'blue', marginBottom: 10 }}>Seleccionar imagen de la galería</Text>
               </TouchableOpacity>
 
               {/* Botón para agregar el Funko */}
