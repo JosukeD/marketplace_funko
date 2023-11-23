@@ -1,39 +1,15 @@
-import React, { useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './screens/HomeScreen';
-import SignInForm from './SignInForm';
+import React, { useEffect } from 'react';
+import { View, StatusBar } from 'react-native';
+import StackNavigator from './StackNavigator';
 
-
-const Stack = createNativeStackNavigator();
-
-const App = () => {
-  const [user, setUser] = useState(null);
-
-  const handleSignIn = (userData) => {
-    setUser(userData);
-  };
-
-  const handleSignOut = () => {
-    setUser(null);
-  };
+export default function App() {
+  useEffect(() => {
+    StatusBar.setBarStyle('light-content');
+  }, []);
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName={user ? 'Home' : 'SignIn'}>
-        <Stack.Screen
-          name="Home"
-          component={() => <HomeScreen user={user} onSignOut={handleSignOut} />}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SignIn"
-          component={() => <SignInForm onSignIn={handleSignIn} />}
-          options={{ title: 'Sign In' }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <View style={{ flex: 1 }}>
+      <StackNavigator />
+    </View>
   );
-};
-
-export default App;
+}
