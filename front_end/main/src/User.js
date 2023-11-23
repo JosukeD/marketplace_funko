@@ -8,7 +8,6 @@ function UserProfile() {
 
   const user = {
     nombre: 'Juan',
-    apellido: 'Pérez',
     foto: userFoto,
     boletas: 5,
     billetera: 100,
@@ -19,6 +18,11 @@ function UserProfile() {
     setProductoSeleccionado(producto);
     setModalActivo(true);
   };
+
+  const logoutClick = ()=>{
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  }
 
   return (
     <div className="user-profile">
@@ -32,8 +36,15 @@ function UserProfile() {
           <li key={index} onClick={() => handleClick(producto)}>{producto}</li>
         ))}
       </ul>
+      
       {modalActivo && <DescripcionProducto producto={productoSeleccionado} setModalActivo={setModalActivo} />}
+      <button className="logout_buttom" type="submit" onClick={logoutClick}>
+      LOG OUT
+      
+      </button>
     </div>
+
+    
   );
 }
 

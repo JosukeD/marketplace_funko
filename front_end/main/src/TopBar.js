@@ -5,6 +5,7 @@ import profileIcon from './resources/Icon.png';
 import './TopBar.css';
 
 function TopBar() {
+  const token = localStorage.getItem("token");
   return (
     <div className="topBar">
       <div className="logo">
@@ -15,10 +16,10 @@ function TopBar() {
       <div className="search-bar">
         <input type="text" placeholder="Search for Funko Pops" />
       </div>
-      <Link to="/signin">Sign In</Link>
-      <Link to="/profile">
-        <img className="profile-icon" src={profileIcon} alt="Profile" /> {/* Botón de perfil agregado aquí */}
-      </Link>
+      {token? null :       <Link to="/signin">Sign In</Link>
+}
+      {token ? <Link to="/profile"><img className="profile-icon" src={profileIcon} alt="Profile" /> {/* Botón de perfil agregado aquí */}
+      </Link> : null}
     </div>
   );
 }
