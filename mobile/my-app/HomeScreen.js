@@ -3,7 +3,7 @@ import { View, Image, ImageBackground, Text, TextInput, TouchableOpacity, FlatLi
 import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
 import { launchCamera } from 'react-native-image-picker';
-import axios from 'axios';
+
 
 const API_BASE_URL = 'https://marketplacefunko-production.up.railway.app/api'; // Reemplaza con la URL correcta
 
