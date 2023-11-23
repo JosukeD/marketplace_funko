@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import TopBar from './TopBar';
 import SignInForm from './SignInForm';
+import SignUpForm from './SignUpForm';
+import UserProfile from './User';
 import Home from './Home';
 import './styles.css';
 import './tarjetas.css'
@@ -26,10 +28,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignInForm />} />
-          <Route path="/signup" element={<SignInForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/profile" element={<UserProfile />} /> 
         </Routes>
       </div>
     </Router>
   );
 }
+
 export default App;

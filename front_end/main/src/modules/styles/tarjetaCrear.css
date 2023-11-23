@@ -1,0 +1,13 @@
+.tarjeta-crear {
+    background-color:rgb(158, 151, 151);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 400px;
+    cursor: pointer;
+    margin-bottom: 4vmin;
+    margin-right: 4vmin;
+}

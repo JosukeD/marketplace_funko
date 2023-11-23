@@ -10,7 +10,7 @@ const TarjetaCrear = () => {
   }
 
   return (
-    <div>
+    <>
       <div className='tarjeta-crear' onClick={handleClick}>
         <h3>CREAR FUNKO</h3>
       </div>
@@ -19,7 +19,7 @@ const TarjetaCrear = () => {
           setModalCrearFunco={setModalCrearFunco}
         />
       }
-    </div>
+    </>
   )
 }
 

@@ -1,43 +1,68 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './SignInForm.css';
+import axios from 'axios'
 
 function SignInForm() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
 
-  const handleSignIn = () => {
-    console.log('Username:', username);
-    console.log('Password:', password);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    console.log("Submitted login");
+    e.preventDefault();
+
+    const apiUrl = `http://localhost:8000/auth/login`;
+
+    axios
+      .post(apiUrl, formData)
+      .then((response) => {
+        const token = response.data.jwt;
+        localStorage.setItem("token", token);
+        window.location.href = "/profile";
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        window.alert("Invalid login :(");
+      });
   }
-
   return (
     <div className="sign-in-container">
       <div className="sign-in-form">
         <h2>Sign In</h2>
-        <form>
-          <label>
-            Username:
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </label>
-          <br />
-          <label>
-            Password:
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          <br />
-          <button type="button" onClick={handleSignIn}>
-            Sign In
-          </button>
-        </form>
+        <form onSubmit={handleSubmit}>
+        <input
+          className="inputField"
+          placeholder="Username"
+          name="username"
+          autoComplete="username"
+          value={formData.email}
+          onChange={handleChange}
+        />
+
+        <input
+          className="inputField"
+          placeholder="Password"
+          type="password"
+          name="password"
+          autoComplete="current-password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+
+        <button className="accessButton loginButton" type="submit">
+          Log In
+        </button>
+      </form>
         <p>
           You don't have an account? <Link to="/signup" className='signInPrompt'>Sign Up</Link>
         </p>

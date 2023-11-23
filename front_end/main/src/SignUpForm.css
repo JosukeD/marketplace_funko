@@ -1,0 +1,66 @@
+@keyframes jump {
+    0%, 100% { transform: translateY(0); }
+    20% { transform: translateY(-10px); }
+  }
+  .sign-up-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Restamos la altura de la barra superior */
+     /* Añadido para excluir la barra superior */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url("resources/funko\ background.jpg");
+  }
+  
+  .sign-up-form {
+    background-color:#aaccfb;
+    padding: 20px;
+    border-radius: 2vmin;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center; 
+  }
+  
+  .sign-up-form:hover {
+    animation: jump 0.5s; 
+  }
+  .sign-up-form h2 {
+    margin: 0;
+  }
+  
+  .sign-up-form form {
+    display: flex;
+    flex-direction: column;
+    background-color: #aaccfb;
+  }
+  
+  .sign-up-form label {
+    margin: 10px 0;
+  }
+  
+  .sign-up-form input {
+    padding: 5px;
+  }
+  
+  .sign-up-form button {
+    padding: 10px;
+    background-color: #4280F3  ;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Agregamos una transición suave */
+  }
+  
+  .sign-up-form button:hover {
+    background-color: rgb(60, 160, 180); /* Cambiamos el color al pasar el mouse */
+  }
+  
+  .signUpPrompt{
+    color: black;
+    z-index: 10;
+    text-decoration:underline;
+    font-weight: bold;
+    color: blue;
+  }
+  
