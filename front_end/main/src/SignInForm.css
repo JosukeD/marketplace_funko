@@ -2,12 +2,12 @@
   0%, 100% { transform: translateY(0); }
   20% { transform: translateY(-10px); }
 }
-
 .sign-in-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200%;
+  height: 100vh; /* Restamos la altura de la barra superior */
+  /* Añadido para excluir la barra superior */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

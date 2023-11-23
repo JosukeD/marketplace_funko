@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './SignInForm.css';
+import './SignUpForm.css';
 
 function SignUpForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSignUp = () => {
-    console.log('Username:', username);
-    console.log('Password:', password);
+    axios.post('/api/signup', {
+      username: username,
+      password: password
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }
 
   return (
-    <div className="sign-in-container">
-      <div className="sign-in-form">
+    <div className="sign-up-container">
+      <div className="sign-up-form">
         <h2>Sign Up</h2>
         <form>
           <label>
@@ -35,7 +43,7 @@ function SignUpForm() {
           </label>
           <br />
           <button type="button" onClick={handleSignUp}>
-            Sign Up
+            Sign Up  {/* Corregido aquí */}
           </button>
         </form>
         <p>
