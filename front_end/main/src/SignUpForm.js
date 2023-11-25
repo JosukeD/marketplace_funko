@@ -26,6 +26,9 @@ function SignUpForm() {
 
     axios
       .post(apiUrl, formData)
+      .then((response) => {
+        window.location.href = "/signin";
+      })
       .catch((error) => {
         console.error("Error:", error);
         window.alert("Invalid login :(");

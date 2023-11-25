@@ -7,8 +7,7 @@ function UserProfile() {
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
 
   const user = {
-    nombre: 'Juan',
-    foto: userFoto,
+    nombre: localStorage.getItem('username'),
     boletas: 5,
     billetera: 100,
     carrito: ['Producto 1', 'Producto 2', 'Producto 3']

@@ -22,7 +22,8 @@ function SignInForm() {
     e.preventDefault();
 
     const apiUrl = `http://localhost:8000/auth/login`;
-
+    localStorage.setItem('username', formData.username);
+    
     axios
       .post(apiUrl, formData)
       .then((response) => {
