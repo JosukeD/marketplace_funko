@@ -21,7 +21,7 @@ function SignInForm() {
     console.log("Submitted login");
     e.preventDefault();
 
-    const apiUrl = `http://localhost:8000/auth/login`;
+    const apiUrl = `http://marketplacefunko-production-f932.up.railway.app/auth/login`;
     localStorage.setItem('username', formData.username);
     
     axios
